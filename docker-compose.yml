@@ -19,4 +19,4 @@ services:
         ports:
             - 9200:9200
         networks: 
-            - elasticELK-0
+            - elastic
