@@ -6,6 +6,8 @@ services:
         environment: 
             - node.name=elk-0
             - cluster.name=kapitolovo
+            - node.data=true
+            - node.master=true
             - discovery.seed_hosts=elk-1.ciberhelp.pro,elk-2.ciberhelp.pro
             - cluster.initial_master_nodes=elk-0,elk-1,elk-2
             - bootstrap.memory_lock=true
@@ -15,8 +17,17 @@ services:
                soft: -1
                hard: -1   
         volumes:
-            - baseelk-0:/usr/share/elasticsearch/data
+            - elkvolumeelk-0:/usr/share/elasticsearch/data
         ports:
             - 9200:9200
         networks: 
             - elastic
+volumes: 
+    elkvolumeelk-0:
+        driver: local
+networks:
+    elastic:
+        driver: bridge
+
+
+            
