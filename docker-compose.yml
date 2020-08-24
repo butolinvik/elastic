@@ -1,0 +1,17 @@
+version: '2.2'
+services:
+    elk-0:
+        image: docker.elastic.co/elasticsearch/elasticsearch:7.9.0
+        container_name: elk-0
+        environment: 
+            - node.name=elk-0
+            - cluster.name=kapitolovo
+            - discovery.seed_hosts=elk-1.ciberhelp.pro,elk-2.ciberhelp.pro
+            - cluster.initial_master_nodes=elk-0,elk-1,elk-2
+            - bootstrap.memory_lock=true
+            - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
+        ulimits:
+            memlock:
+               soft: -1
+               hard: -1   
+        
