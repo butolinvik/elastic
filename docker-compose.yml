@@ -14,4 +14,9 @@ services:
             memlock:
                soft: -1
                hard: -1   
-        
+        volumes:
+            - baseelk-0:/usr/share/elasticsearch/data
+        ports:
+            - 9200:9200
+        networks: 
+            - elasticELK-0
